@@ -73,7 +73,6 @@ _touchO.distance_num = function (mode, targetX) {
   let overTime = new Date().getTime() - this.prevTime > 100
   tweenO.start = nowX
   tweenO.mode = mode
-  console.log(targetX)
   if (targetX === undefined) {
     distance = this.speed * Math.abs(this.speed / a)
   } else {
