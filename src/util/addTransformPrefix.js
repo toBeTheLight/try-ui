@@ -1,4 +1,4 @@
-let transformAddPrefix = function (str) {
+let addTransformPrefix = function (str) {
   let prefixArr = [
     'transform',
     '-ms-transform',
@@ -12,10 +12,10 @@ let transformAddPrefix = function (str) {
   if ($1.indexOf(';') === -1) {
     semicolon = ';'
   }
-  let transformAddPrefix = ''
+  let s = ''
   prefixArr.forEach((val) => {
-    transformAddPrefix += `${val}${$1}${semicolon}`
+    s += `${val}${$1}${semicolon}`
   })
-  return transformAddPrefix
+  return s
 }
-export default transformAddPrefix
+export default addTransformPrefix

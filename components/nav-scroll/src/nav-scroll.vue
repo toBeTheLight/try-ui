@@ -12,7 +12,7 @@
 <script>
   import _touchO from './_touchO.js'
   import tweenO from './tweenO.js'
-  import {transformAddPrefix, tween} from '@/util'
+  import {addTransformPrefix, tween} from '@/util'
   
   export default {
     name: 'nav-scroll',
@@ -67,7 +67,7 @@
           direct = 'left'
         }
         let deltaX = nowX - _touchO.prevX
-        this.transformStyle = transformAddPrefix(`transform:translate3d(${_touchO.translateX_num(direct, deltaX)}px,0,0)`)
+        this.transformStyle = addTransformPrefix(`transform:translate3d(${_touchO.translateX_num(direct, deltaX)}px,0,0)`)
         _touchO.prevX = nowX
         _touchO.prevTime = nowTime
         event.preventDefault() 

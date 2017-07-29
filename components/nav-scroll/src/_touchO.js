@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {transformAddPrefix, tween} from '@/util'
+import {addTransformPrefix, tween} from '@/util'
 import tweenO from './tweenO'
 /* eslint-enable no-unused-vars */
 // 非组件相关变量
@@ -104,7 +104,7 @@ _touchO.autoScroll = function (change, tweenO, mode) {
     }
 //  document.write(`${_touchO.translateX}/r/n`)
     _touchO.translateX = tweenFun(tweenO.time, tweenO.start, change, tweenO.step)
-    that.transformStyle = transformAddPrefix(`transform:translate3d(${_touchO.translateX}px,0,0)`)
+    that.transformStyle = addTransformPrefix(`transform:translate3d(${_touchO.translateX}px,0,0)`)
     tweenO.time++
   }, tweenO.duration / tweenO.step)
 }
