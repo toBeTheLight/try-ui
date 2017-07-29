@@ -1,3 +1,3 @@
-import transformAddPrefix from './transformAddPrefix'
+import addTransformPrefix from './addTransformPrefix'
 import tween from './tween'
-export {transformAddPrefix, tween}
+export {addTransformPrefix, tween}

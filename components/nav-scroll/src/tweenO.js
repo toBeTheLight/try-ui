@@ -1,7 +1,7 @@
 let tweenO = {
   start: '',
-  duration: 500,
-  step: 30,
+  duration: 400,
+  step: 60,
   time: 0,
   fun: null,
   mode: ''

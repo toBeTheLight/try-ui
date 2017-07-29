@@ -89,13 +89,22 @@
         event.preventDefault() 
         return false
       },
+      scrollTo (el) {
+        let target = {}
+        _touchO.init(this, this.hasButton)
+        if (typeof el === 'object') {
+          target.width = _touchO.width_num(el) + Number(window.getComputedStyle(el).paddingLeft.replace('px',''))
+          target.left = el.getBoundingClientRect().left + target.width / 2
+          target.parentLeft = this.$refs.toucharea.getBoundingClientRect().left
+          target.targetX = (_touchO.wrapperWidth / 2) - (target.left - target.parentLeft) 
+        } else {
+          target.targetX = el
+        }
+        let distance = _touchO.distance_num('linear', target.targetX)
+        _touchO.autoScroll.call(this, distance, tweenO)
+      },
       update() {
         _touchO.reInit()
-      }
-    },
-    watch: {
-      navChecked () {
-        this._getListWidth()
       }
     }
   }

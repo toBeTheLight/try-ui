@@ -46,7 +46,6 @@ _touchO.translateX_num = function (direct, deltaX) {
 _touchO.init = function (vm, hasButton) {
   if (!this.inited) {
   this.listWidth = this.width_num(vm.$slots.nav[0].elm)
-  console.log(this.listWidth)
   this.wrapperWidth = this.width_num(vm.$el)
   if (hasButton) {
     this.buttonWidth = this.width_num(vm.$slots.button[0].elm)
@@ -67,22 +66,28 @@ _touchO.init = function (vm, hasButton) {
 _touchO.width_num = function (el) {
   return Number(window.getComputedStyle(el).width.replace('px', ''))
 }
-_touchO.distance_num = function (mode) {
+_touchO.distance_num = function (mode, targetX) {
   let nowX = _touchO.translateX
   let distance
   let a = 3 / 500
+  let overTime = new Date().getTime() - this.prevTime > 100
   tweenO.start = nowX
   tweenO.mode = mode
-  distance = this.speed * Math.abs(this.speed / a)
+  console.log(targetX)
+  if (targetX === undefined) {
+    distance = this.speed * Math.abs(this.speed / a)
+  } else {
+    distance = targetX - nowX
+  }
   // 左回弹
   if (nowX > 0) {
     tweenO.mode = 'elastic'
     distance = 0 - nowX
   // 右回弹
-  }else if (nowX <= _touchO.maxTranslateX) {
+  }else if (nowX < _touchO.maxTranslateX) {
     distance = _touchO.maxTranslateX - nowX
     tweenO.mode = 'elastic'
-  } else if(new Date().getTime() - this.prevTime > 100) {
+  } else if(overTime && targetX === undefined) {
     distance = 0
     // 自动滑动超出
   }else if (nowX + distance > 0) {

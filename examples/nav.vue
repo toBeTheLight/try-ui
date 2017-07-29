@@ -1,5 +1,5 @@
 <template>
-  <navScroll :hasButton='true'>
+  <navScroll :hasButton='true' ref="navScroll">
     <ul slot="nav">
       <li v-for="(item, index) of navList" v-text="item.value"></li>
     </ul>
@@ -63,6 +63,9 @@
           }
         ]
       }
+    },
+    mounted () {
+      console.log(this.$refs.navScroll.scrollTo)
     },
     components: {
       navScroll
