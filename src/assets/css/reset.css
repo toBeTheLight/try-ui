@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 html {
-  font-family:"宋体","Microsoft YaHei","微软雅黑","SimSun";
+  font-family: STHeiti,Microsoft YaHei,Helvetica,Arial,sans-serif;
     /*-ms-text-size-adjust: 100%;*/
     /*-webkit-text-size-adjust: 100%;*/
     background: transparent;
@@ -17,7 +17,7 @@ html,body{
   overflow: hidden;
 }
 body, button, input, select, textarea {
-    font: 12px \5b8b\4f53, arial, sans-serif;
+    font-size: 12px;
 }
 h1, h2, h3, h4, h5, h6 {
     font-size: 100%;

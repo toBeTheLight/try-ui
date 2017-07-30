@@ -1,10 +1,12 @@
 <template>
-  <navScroll :hasButton='true' ref="navScroll">
-    <ul slot="nav">
-      <li v-for="(item, index) of navList" v-text="item.value"></li>
-    </ul>
-    <button slot="button"></button>
-  </navScroll>
+  <nav class="bg nav">
+    <navScroll :hasButton="true" ref="navScroll">
+      <ul slot="nav" class="nav-content">
+        <li class="nav-item" :class="['nav-item', {'active':index === activeIndex}]" v-for="(item, index) of navList" v-text="item.value" @click="clickHandler(index)"></li>
+      </ul>
+      <button slot="button" class="btn bg iconfont icon-add1"></button>
+    </navScroll>
+  </nav>
 </template>
 
 <script>
@@ -61,10 +63,16 @@
             value: '十二十二',
             id: 12
           }
-        ]
+        ],
+        activeIndex: 0
       }
     },
-    mounted () {
+    methods: {
+      clickHandler (index) {
+        console.log(index)
+        this.activeIndex = index
+        this.$refs.navScroll.scrollTo(document.querySelectorAll('nav .nav-item')[index])
+      }
     },
     components: {
       navScroll
@@ -74,15 +82,41 @@
 
 <style lang="less" scoped>
 @import url("../src/base/base.less");
-ul {
+.bg {
+  background-color: grey; 
+}
+.nav {
+  font-size: 34*@px;
+  line-height: 3;
+  color: white;
+  
+}
+.nav-content {
   display: inline-block;
   overflow: visible;
-  color: white;
   white-space: nowrap;
-  // transition: all .1s linear;
-  li{
+  .nav-item{
     display: inline-block;
     padding: 0 30*@px;
+    &.active {
+      color: deepskyblue;
+    }
   }
+}
+.btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 70*@px;
+  height: 70*@px;
+  color: deepskyblue;
+  box-shadow: -5px 0 5px -5px rgba(0, 0, 0, .6), 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+  opacity: .9;
+}
+.icon-add1 {
+  font-size: 40*@px;
+  font-weight: bold;
 }
 </style>

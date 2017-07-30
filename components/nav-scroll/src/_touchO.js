@@ -10,7 +10,7 @@ let _touchO = {
   startX: '',
   prevX: '',
   // 两次差值，做误触判定
-  deltaX: '',
+  deltaX: 0,
   startTime: '',
   translateX: 0,
   // maxTranslateX为负
@@ -20,25 +20,25 @@ let _touchO = {
   timer: null,
   inited: false,
   canScroll: true,
-  misuse: false
+  isClick: false
 }
 // touchmove改变量计算
 _touchO.translateX_num = function (direct, deltaX) {
-  let x = this.translateX + deltaX
+  let x = this.translateX + this.deltaX
   let moreX, k
   if (x > 0) {
     if (direct === 'right') {
       moreX = this.maxOverX - this.translateX
       moreX > 0 ? k = moreX / this.maxOverX : k = 0
-      deltaX = deltaX * k
-      x = this.translateX + deltaX
+      this.deltaX = this.deltaX * k
+      x = this.translateX + this.deltaX
     }
   } else if (x < this.maxTranslateX) {
     if (direct === 'left') {
       moreX = this.maxOverX - (this.maxTranslateX - this.translateX)
       moreX > 0 ? k = moreX / this.maxOverX : k = 0
-      deltaX = deltaX * k
-      x = this.translateX + deltaX
+      this.deltaX = this.deltaX * k
+      x = this.translateX + this.deltaX
     }
   }
   this.translateX = x
@@ -72,7 +72,7 @@ _touchO.distance_num = function (mode, targetX) {
   let nowX = _touchO.translateX
   let distance
   let a = 3 / 500
-  let overTime = new Date().getTime() - this.prevTime > 100
+  let overTime = new Date().getTime() - this.prevTime > 8
   tweenO.start = nowX
   tweenO.mode = mode
   if (targetX === undefined) {
@@ -97,7 +97,6 @@ _touchO.distance_num = function (mode, targetX) {
   } else if (nowX + distance <= _touchO.maxTranslateX) {
     distance = _touchO.maxTranslateX - nowX
   }
-  this.speed = 0
   return distance
 }
 
@@ -109,7 +108,6 @@ _touchO.autoScroll = function (change, tweenO, mode) {
     if (tweenO.time >= tweenO.step) {
       clearInterval(_touchO.timer)
     }
-//  document.write(`${_touchO.translateX}/r/n`)
     _touchO.translateX = tweenFun(tweenO.time, tweenO.start, change, tweenO.step)
     that.transformStyle = addTransformPrefix(`transform:translate3d(${_touchO.translateX}px,0,0)`)
     tweenO.time++

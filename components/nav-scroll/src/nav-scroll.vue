@@ -1,12 +1,12 @@
 <template>
-  <nav class="nav">
-    <div class="ul-wrapper" ref="toucharea"  @touchstart="touchstartHandler" @touchmove="touchmoveHandler" @touchend="touchendHandler" :style="transformStyle">
+  <div class="nav-scroll-wrapper">
+    <div class="ul-wrapper" ref="toucharea" @touchstart="touchstartHandler" @touchmove="touchmoveHandler" @touchend="touchendHandler" :style="transformStyle">
       <slot name="nav">
       </slot>
     </div>
     <slot name="button" v-if="hasButton">
     </slot>
-  </nav>
+  </div>
 </template>
 
 <script>
@@ -41,17 +41,14 @@
         // 处理元素长度 start相关
         _touchO.init(this, this.hasButton)
         // 初始化当次数值
+        _touchO.speed = 0
         _touchO.startX = event.touches[0].clientX
         _touchO.prevX = _touchO.startX
         _touchO.startTime = new Date().getTime()
         _touchO.prevTime = _touchO.startTime
-        event.preventDefault() 
         return false
       },
       touchmoveHandler (event) {
-        if (!_touchO.canScroll) {
-          return
-        }
         if (event.touches.length !== 1) {
           return
         }
@@ -66,9 +63,8 @@
         } else {
           direct = 'left'
         }
-        let deltaX = nowX - _touchO.prevX
-        _touchO.deltaX = deltaX
-        this.transformStyle = addTransformPrefix(`transform:translate3d(${_touchO.translateX_num(direct, deltaX)}px,0,0)`)
+        _touchO.deltaX = nowX - _touchO.prevX
+        this.transformStyle = addTransformPrefix(`transform:translate3d(${_touchO.translateX_num(direct)}px,0,0)`)
         _touchO.prevX = nowX
         _touchO.prevTime = nowTime
         event.preventDefault() 
@@ -78,15 +74,17 @@
         if (!_touchO.canScroll) {
           return
         }
-        if (event.touches.length === 0) {
-          _touchO.prevX = ''
-        } else {
+        if (event.touches.length !== 0) {
           return
         }
-        let endTime = new Date().getTime()
+        let overTime = new Date().getTime() - _touchO.startTime < 200
+        let misuse = Math.abs(_touchO.prevX - _touchO.startX) <= 1
+        if ((overTime || Math.abs(_touchO.speed) < .1) && misuse) {
+          return
+        }
+        _touchO.prevX = ''
         let distance = _touchO.distance_num(this.mode)
         _touchO.autoScroll.call(this, distance, tweenO)
-        event.preventDefault() 
         return false
       },
       scrollTo (el) {
@@ -106,34 +104,22 @@
       update() {
         _touchO.reInit()
       }
+    },
+    activated () {
+      _touchO.reInit()
     }
   }
 </script>
 
 <style lang="less" scoped>
 @import '../../../src/base/base.less';
-.nav {
+.nav-scroll-wrapper {
   position: relative;
   overflow: hidden;
-  height: 100*@px;
   width: 100%;
-  line-height: 100*@px;
-  background-color: rgb(187, 33, 51);
-  font-size: 30*@px;
+  background-color: transparent;
   .ul-wrapper{
     display: inline-block;
-  }
-  button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-    width: 70*@px;
-    height: 70*@px;
-    background-color: rgb(187, 33, 51);
-    box-shadow: -5px 0 5px -5px rgba(0, 0, 0, .6), 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
-    opacity: .9;
   }
 }
 </style>
