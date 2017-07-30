@@ -9,6 +9,8 @@ let _touchO = {
   buttonWidth: 0,
   startX: '',
   prevX: '',
+  // 两次差值，做误触判定
+  deltaX: '',
   startTime: '',
   translateX: 0,
   // maxTranslateX为负
@@ -95,6 +97,7 @@ _touchO.distance_num = function (mode, targetX) {
   } else if (nowX + distance <= _touchO.maxTranslateX) {
     distance = _touchO.maxTranslateX - nowX
   }
+  this.speed = 0
   return distance
 }
 

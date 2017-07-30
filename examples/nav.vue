@@ -65,7 +65,6 @@
       }
     },
     mounted () {
-      console.log(this.$refs.navScroll.scrollTo)
     },
     components: {
       navScroll

@@ -67,6 +67,7 @@
           direct = 'left'
         }
         let deltaX = nowX - _touchO.prevX
+        _touchO.deltaX = deltaX
         this.transformStyle = addTransformPrefix(`transform:translate3d(${_touchO.translateX_num(direct, deltaX)}px,0,0)`)
         _touchO.prevX = nowX
         _touchO.prevTime = nowTime
@@ -83,7 +84,6 @@
           return
         }
         let endTime = new Date().getTime()
-        let stayTime = endTime - _touchO.prevTime
         let distance = _touchO.distance_num(this.mode)
         _touchO.autoScroll.call(this, distance, tweenO)
         event.preventDefault() 
