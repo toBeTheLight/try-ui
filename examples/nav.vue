@@ -1,6 +1,6 @@
 <template>
   <nav class="bg nav">
-    <navScroll :hasButton="true" ref="navScroll">
+    <navScroll  ref="navScroll">
       <ul slot="nav" class="nav-content">
         <li class="nav-item" :class="['nav-item', {'active':index === activeIndex}]" v-for="(item, index) of navList" v-text="item.value" @click="clickHandler(index)"></li>
       </ul>
@@ -69,7 +69,6 @@
     },
     methods: {
       clickHandler (index) {
-        console.log(index)
         this.activeIndex = index
         this.$refs.navScroll.scrollTo(document.querySelectorAll('nav .nav-item')[index])
       }

@@ -4,7 +4,7 @@
       <slot name="nav">
       </slot>
     </div>
-    <slot name="button" v-if="hasButton">
+    <slot name="button">
     </slot>
   </div>
 </template>
@@ -17,10 +17,6 @@
   export default {
     name: 'nav-scroll',
     props: {
-      hasButton: {
-        type: Boolean,
-        default: false
-      },
       mode: {
         type: String,
         default: 'quart'
@@ -28,7 +24,8 @@
     },
     data () {
       return {
-        transformStyle: ''
+        transformStyle: '',
+        hasButton: false
       }
     },
     methods: {
@@ -103,6 +100,11 @@
       },
       update() {
         _touchO.reInit()
+      }
+    },
+    mounted () {
+      if (this.$slots.button) {
+        this.hasButton = true
       }
     },
     activated () {
