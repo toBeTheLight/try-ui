@@ -5,22 +5,27 @@
 左右超出回弹，手指离开自动滚动，即点即停
 
 ## api
+
+### 内容: slot
 组件提供了两个slot
 
-#### slot:nav
+#### slot: nav
 导航主体  
 此部分请以内容撑开,推荐使用`display:inline-block`
-#### slot:button
-功能button  
+#### slot: button
+功能button,非必需。  
 可选择插入一个button
-#### scrollTo
-滚动至某子元素。  
-组件添加`ref=navScroll`,使用this.$refs.navScroll.scrollTo(el),参数为目标子元素(也可接受具体数值)
-#### update
-导航主体内容更新后更新状态(this.$nextTick内调用)
-导航组件添加`ref=navScroll`,使用this.$refs.navScroll.update()
+
+### 输出: 功能函数
+
+#### scrollTo: function
+滚动至某子元素。接受参数为子元素。  
+#### update: function
+导航主体内容更新后更新状态(this.$nextTick内调用)，无参数。
 
 ### 示例
+http://localhost:8080/#/nav
+
 ```html
 <template>
   <nav class="bg nav">
