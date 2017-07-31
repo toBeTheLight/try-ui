@@ -80,7 +80,7 @@
 </script>
 
 <style lang="less" scoped>
-@import url("../src/base/base.less");
+@import url("../../src/base/base.less");
 .bg {
   background-color: grey; 
 }

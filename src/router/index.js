@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import demo from '@e/demo'
-import nav from '@e/nav'
+import nav from '@e/nav/nav'
 import pagesScroll from '@e/pages-scroll/pages-scroll'
 
 Vue.use(Router)
