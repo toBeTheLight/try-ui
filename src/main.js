@@ -11,9 +11,9 @@ import '@/assets/css/reset.css'
 import '@/assets/font/iconfont.css'
 
 if ('addEventListener' in document) {
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     FastClick.attach(document.body)
-}, false)
+  }, false)
 }
 /* eslint-disable no-new */
 new Vue({

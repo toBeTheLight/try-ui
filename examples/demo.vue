@@ -5,6 +5,11 @@
         nav-scroll
       </li>
     </router-link>
+    <router-link to="pages-scroll">
+      <li>
+        pages-scroll
+      </li>
+    </router-link>
   </ul>
 </template>
 
@@ -22,8 +27,8 @@
   }
 </script>
 
-<style lang="less" scoped="">
-@import '../src/base/base.less';
+<style lang="less" scoped>
+@import url('../src/base/base.less');
 li{
   font-size: 40*@px;
   line-height: 1.5;
