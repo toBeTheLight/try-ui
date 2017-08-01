@@ -26,6 +26,8 @@
 ### 示例
 http://localhost:8080/#/nav
 
+![nav-scroll gif](https://github.com/toBeTheLight/try-ui/blob/master/static/nav-scroll.gif)
+
 ```html
 <template>
   <nav class="bg nav">

@@ -28,6 +28,8 @@
 http://localhost:8080/#/page-switch
 因为手机端不存在手指滑出屏幕的情况,查看demo时鼠标滑出窗口会出现预料之中的问题。
 
+![page-switch gif](https://github.com/toBeTheLight/try-ui/blob/master/static/page-switch.gif)
+
 ```html
 <template>
   <div class="wrapper">
