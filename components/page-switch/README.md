@@ -7,7 +7,7 @@
 
 ### 输入：props
 
-#### pagesList: array
+#### pagesList: [vue-component] array
 页面组件列表
 #### mainIndex: number
 初始显示页面索引，默认为0
@@ -26,6 +26,7 @@
 
 ## 示例
 http://localhost:8080/#/page-switch
+
 因为手机端不存在手指滑出屏幕的情况,查看demo时鼠标滑出窗口会出现预料之中的问题。
 
 ![page-switch gif](https://github.com/toBeTheLight/try-ui/blob/master/static/page-switch.gif)
