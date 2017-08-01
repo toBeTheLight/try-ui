@@ -12,7 +12,6 @@
 
 <script>
   import Vue from 'vue'
-  let pagePool = []
   import _touchO from './_touchO'
   import {addTransformPrefix} from '@/util'
   export default {

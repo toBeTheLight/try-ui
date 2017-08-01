@@ -1,14 +1,15 @@
 <template>
   <div class="wrapper">
     <button @click="toPageTwo">跳转至页面二</button>
-    <pages-scroll :preLoad="false" :loadPage="loadPage" :pagesList="pagesList" ref="pagesScroll" :pageChanged="pageChanged"></pages-scroll>
+    <p>请勿将手指滑动至屏幕外</p>
+    <page-switch :preLoad="false" :loadPage="loadPage" :pagesList="pagesList" ref="pageSwitch" :pageChanged="pageChanged"></page-switch>
   </div>
 </template>
 
 <script>
   import {PageOne, PageTwo, PageThree, PageFour} from './children'
   import {Loading} from './children'
-  import pagesScroll from '@c/pages-scroll'
+  import pageSwitch from '@c/page-switch'
   export default {
     data () {
       return {
@@ -17,11 +18,11 @@
       }
     },
     components: {
-      pagesScroll
+      pageSwitch
     },
     methods: {
       toPageTwo () {
-        this.$refs.pagesScroll.showPage(1)
+        this.$refs.pageSwitch.showPage(1)
       },
       pageChanged () {
         console.log('翻页成功')

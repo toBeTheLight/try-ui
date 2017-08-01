@@ -1,4 +1,4 @@
-# pages-scroll
+# page-switch
 页面级滑动切换
 ## 功能
 左右滑动过半，切换页面
@@ -25,21 +25,21 @@
 
 
 ## 示例
-http://localhost:8080/#/pages-scroll
+http://localhost:8080/#/page-switch
 因为手机端不存在手指滑出屏幕的情况,查看demo时鼠标滑出窗口会出现预料之中的问题。
 
 ```html
 <template>
   <div class="wrapper">
     <button @click="toPageTwo">跳转至页面二</button>
-    <pages-scroll :preLoad="false" :loadPage="loadPage" :pagesList="pagesList" ref="pagesScroll" :pageChanged="pageChanged"></pages-scroll>
+    <page-switch :preLoad="false" :loadPage="loadPage" :pagesList="pagesList" ref="pageSwitch" :pageChanged="pageChanged"></page-switch>
   </div>
 </template>
 ```
 ```js
   import {PageOne, PageTwo, PageThree, PageFour} from './children'
   import {Loading} from './children'
-  import pagesScroll from '@c/pages-scroll'
+  import pageSwitch from '@c/page-switch'
   export default {
     data () {
       return {
@@ -48,11 +48,11 @@ http://localhost:8080/#/pages-scroll
       }
     },
     components: {
-      pagesScroll
+      pageSwitch
     },
     methods: {
       toPageTwo () {
-        this.$refs.pagesScroll.showPage(1)
+        this.$refs.pageSwitch.showPage(1)
       },
       pageChanged () {
         console.log('翻页成功')

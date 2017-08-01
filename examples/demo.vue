@@ -5,9 +5,9 @@
         nav-scroll
       </li>
     </router-link>
-    <router-link to="pages-scroll">
+    <router-link to="page-switch">
       <li>
-        pages-scroll
+        page-switch
       </li>
     </router-link>
   </ul>
