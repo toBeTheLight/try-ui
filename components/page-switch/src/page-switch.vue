@@ -133,7 +133,6 @@
         this.showIndex -= _touchO.result
         _touchO.onTransition = false
         this.pagesList[this.showIndex]._page_loaded = true
-        console.log('change')
         if (this.pageChanged) {
           this.pageChanged()
         }
