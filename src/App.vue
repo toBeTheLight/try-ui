@@ -1,20 +1,42 @@
 <template>
   <div id="app">
-  	<router-view></router-view>
+    <TryButton @click="showMessageBox">消息弹窗</TryButton>
   </div>
 </template>
 
 <script>
+import TryButton from './components/button/Button.vue'
 export default {
-  name: 'app'
+  name: 'App',
+  data () {
+    return {
+      testData: 'testData'
+    }
+  },
+  methods: {
+    testMethod () {
+      alert(this.testData)
+    },
+    showMessageBox () {
+      console.log(1)
+      this.$TryMessageBox({
+        title: '消息提示',
+        message: '是否提交？'
+      }).then(() => {
+        this.testMethod()
+      }).catch(() => {
+        console.log('err')
+      })
+    }
+  },
+  components: {
+    TryButton
+  }
 }
 </script>
 
 <style>
 #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   height: 100%;
   width: 100%;
 }
