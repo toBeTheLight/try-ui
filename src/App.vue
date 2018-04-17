@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <TryButton @click="showMessageBox">消息弹窗</TryButton>
+    <TryDatePicker />
   </div>
 </template>
 

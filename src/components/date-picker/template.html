@@ -1,0 +1,30 @@
+<div class="try-datepicker">
+  <div class="try-datepicker__toggle">
+    <button @click="changeYear(-1)">《</button>
+    <button @click="changeMonth(-1)"><</button>
+    <h3>{{year}}年{{month}}月</h3>
+    <button @click="changeMonth(1)">></button>
+    <button @click="changeYear(1)">》</button>
+  </div>
+  <table>
+    <thead class="try-datepicker__header">
+      <th>日</th>
+      <th>一</th>
+      <th>二</th>
+      <th>三</th>
+      <th>四</th>
+      <th>五</th>
+      <th>六</th>
+    </thead>
+    <tbody>
+      <tr v-for="(row, index) in dateRows" :key="index">
+        <td
+          @click="selectDate(cell)"
+          class="try-datepicker__cell"
+          :class="cell.type"
+          v-for="cell in row"
+          :key="cell.date">{{cell.date}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

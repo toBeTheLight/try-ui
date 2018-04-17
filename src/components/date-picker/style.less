@@ -1,0 +1,22 @@
+.try-datepicker {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  &__toggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__header {
+    text-align: center;
+  }
+  &__cell {
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    &.next, &.prev{
+      opacity: .6;
+    }
+  }
+}
