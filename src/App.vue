@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TryButton @click="showMessageBox" size="small">消息弹窗</TryButton>
-    <TryDatePicker />
+    <TryDatePicker v-model="date"/>
     <TryInput v-model="inputVal"/>
   </div>
 </template>
@@ -13,7 +13,8 @@ export default {
   data () {
     return {
       testData: 'testData',
-      inputVal: '1'
+      inputVal: '1',
+      date: ''
     }
   },
   methods: {

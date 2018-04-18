@@ -70,7 +70,7 @@ export default {
       this.initPanel(new Date(`${this.dateShown.year}/${this.dateShown.month}/01`))
     },
     selectDate (cell) {
-      alert(`${cell.year}/${cell.month}/${cell.date}`)
+      this.$emit('selectDate', `${cell.year}/${cell.month}/${cell.date}`)
     }
   },
   created () {
