@@ -9,8 +9,8 @@ export default {
     }
   },
   methods: {
-    clickHandle () {
-      this.$emit('click')
+    clickHandle (event) {
+      this.$emit('click', event)
     }
   }
 }

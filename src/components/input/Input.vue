@@ -30,11 +30,11 @@ export default {
     }
   },
   methods: {
-    focusHandler () {
-      this.$emit('focus')
+    focusHandler (event) {
+      this.$emit('focus', event)
     },
     blurHandler () {
-      this.$emit('blur')
+      this.$emit('blur', event)
     },
     changeHandler (event) {
       this.$emit('change', event)
