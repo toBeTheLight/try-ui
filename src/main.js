@@ -2,7 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import './assets/common.less'
+import './assets/css/common.less'
+import './assets/css/var.less'
 import './assets/transition.less'
 
 import installElementCmpts from './components/elementCmpts'
