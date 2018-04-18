@@ -1,7 +1,10 @@
 .try-datepicker {
-  width: 350px;
+  width: 290px;
   display: flex;
   flex-direction: column;
+  &__panel {
+    border: 1px solid black;
+  }
   &__toggle {
     display: flex;
     flex-direction: row;
@@ -11,10 +14,14 @@
     text-align: center;
   }
   &__cell {
+    cursor: pointer;
     color: #333;
     font-size: 16px;
     text-align: center;
     padding: 10px;
+    &:hover {
+      background-color: #eee;
+    }
     &.next, &.prev{
       opacity: .6;
     }
