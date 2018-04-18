@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TryButton @click="showMessageBox">消息弹窗</TryButton>
+    <TryButton @click="showMessageBox" size="small">消息弹窗</TryButton>
     <TryDatePicker />
     <TryInput v-model="inputVal"/>
   </div>

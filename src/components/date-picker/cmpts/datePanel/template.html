@@ -8,13 +8,7 @@
   </div>
   <table>
     <thead class="try-datepanel__header">
-      <th>日</th>
-      <th>一</th>
-      <th>二</th>
-      <th>三</th>
-      <th>四</th>
-      <th>五</th>
-      <th>六</th>
+      <th v-for="day in weeks" :key="day">{{day}}</th>
     </thead>
     <tbody>
       <tr v-for="(row, index) in dateMatrix" :key="index">
