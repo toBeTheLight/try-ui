@@ -1,14 +1,29 @@
+@hoverColor: #57a3f3;
+@focusColor: rgb(59, 153, 252);
+@hoverBgColor: #f5f7fa;
 .baseBorder {
   border: 1px solid #333;
 }
 .hoverBorder {
-  border: 1px solid #57a3f3;
+  border: 1px solid @hoverColor;
 }
 .focusBorder {
   .hoverBorder
 }
 .focusShadow {
   box-shadow: 0 0 0 2px rgba(45,140,240,.2);
+}
+.focusOutline {
+  outline-color: @focusColor;
+  outline-style: auto;
+  outline-width: 5px;
+}
+.hoverBg {
+  background-color: @hoverBgColor;
+}
+.selectedLine {
+  color: @focusColor;
+  background-color: @hoverBgColor;
 }
 .largePadding {
   padding: 15px 25px;
