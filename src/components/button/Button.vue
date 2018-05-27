@@ -1,4 +1,8 @@
-<template src="./template.html"></template>
+<template>
+  <button @click.stop="clickHandle" :class="`try-button try-button--${size}`">
+    <slot></slot>
+  </button>
+</template>
 
 <script>
 export default {
@@ -15,4 +19,23 @@ export default {
   }
 }
 </script>
-<style src="./style.less" lang="less"></style>
+<style lang="less">
+@import (reference) '~@/assets/css/var.less';
+
+.try-button {
+  .baseBorder;
+  & +.try-button {
+    margin-left: 10px;
+  }
+}
+
+.try-button--large {
+  .largePadding;
+}
+.try-button--normal {
+  .normalPadding;
+}
+.try-button--small {
+  .smallPadding;
+}
+</style>

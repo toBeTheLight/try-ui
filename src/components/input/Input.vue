@@ -1,4 +1,17 @@
-<template src="./template.html">
+<template>
+  <input
+    class="try-input"
+    @keyup.esc="escHandler"
+    @focus="focusHandler"
+    @blur="blurHandler"
+    @change="changeHandler"
+    @input="inputHandler"
+    @compositionstart="compositionHandler"
+    @compositionupdate="compositionHandler"
+    @compositionend="compositionHandler"
+    v-model="currentValue"
+    :type="type"
+  />
 </template>
 
 <script>
@@ -33,7 +46,7 @@ export default {
     focusHandler (event) {
       this.$emit('focus', event)
     },
-    blurHandler () {
+    blurHandler (event) {
       this.$emit('blur', event)
     },
     changeHandler (event) {
@@ -53,10 +66,31 @@ export default {
       } else {
         this.isOnComposition = true
       }
+    },
+    escHandler (event) {
+      this.$emit('keyup.esc', event)
     }
   }
 }
 </script>
 
-<style src="./style.less" lang="less">
+<style lang="less">
+@import (reference) '~@/assets/css/var.less';
+
+.try-input {
+  width: 200px;
+  .normalPadding;
+  .baseBorder;
+  &:hover {
+    .hoverBorder;
+  }
+  &:focus {
+    .hoverBorder;
+    .focusShadow;
+    .focusOutline
+  }
+  &[readonly]:focus {
+    .focusOutline
+  }
+}
 </style>

@@ -1,4 +1,11 @@
-<template src="./template.html">
+<template>
+  <div class="try-datepicker" v-clickoutside="closePanel">
+    <TryInput @focus="openPanel" v-model="currentValue"/>
+    <TryDatePanel
+      v-show="isOpen"
+      class="try-datepicker__panel"
+      @selectDate="selectDate"/>
+  </div>
 </template>
 
 <script>
@@ -37,4 +44,14 @@ export default {
 }
 </script>
 
-<style src="./style.less" lang="less"></style>
+<style lang="less">
+.try-datepicker {
+  position: relative;
+  display: inline-block;
+}
+.try-datepicker__panel {
+  position: absolute;
+  top: 45px;
+  left: 0;
+}
+</style>

@@ -1,4 +1,28 @@
-<template src="./template.html">
+<template>
+  <div class="try-datepanel">
+    <div class="try-datepanel__toggle">
+      <button @click="changeDateShown(-1, 'year')">《</button>
+      <button @click="changeDateShown(-1, 'month')"></button>
+      <h3>{{dateShown.year}}年{{dateShown.month}}月</h3>
+      <button @click="changeDateShown(1, 'month')">></button>
+      <button @click="changeDateShown(1, 'year')">》</button>
+    </div>
+    <table>
+      <thead class="try-datepanel__header">
+        <th v-for="day in weeks" :key="day">{{day}}</th>
+      </thead>
+      <tbody>
+        <tr v-for="(row, index) in dateMatrix" :key="index">
+          <td
+            @click="selectDate(cell)"
+            class="try-datepanel__cell"
+            :class="[cell.type]"
+            v-for="cell in row"
+            :key="cell.date">{{cell.date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -80,5 +104,35 @@ export default {
 }
 </script>
 
-<style src="./style.less" lang="less">
+<style lang="less">
+@import (reference) '~@/assets/css/var.less';
+
+.try-datepanel {
+  display: flex;
+  flex-direction: column;
+  width: 290px;
+  .baseBorder;
+  &__toggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .smallPadding;
+  }
+  &__header {
+    text-align: center;
+  }
+  &__cell {
+    cursor: pointer;
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    &:hover {
+      background-color: #eee;
+    }
+    &.next, &.prev{
+      opacity: .6;
+    }
+  }
+}
 </style>

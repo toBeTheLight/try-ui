@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import './assets/css/common.less'
+import './assets/css/reset.css'
 import './assets/css/var.less'
 import './assets/transition.less'
 
